@@ -1,0 +1,22 @@
+{
+    "name": "amostajo/wordpress-plugin",
+    "description": "A Wordpress Plugin Template that comes with composer and a lightweight MVC framework for Wordpress.",
+    "license": "MIT",
+    "keywords": ["wordpress","plugin","plugins","mvc"],
+    "authors": [
+        {
+            "name": "Alejandro Mostajo",
+            "email": "amostajo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "amostajo/wordpress-plugin-core": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plugin\\": "plugin"
+        }
+    },
+    "minimum-stability": "dev"
+}

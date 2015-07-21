@@ -1,0 +1,120 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Commands for composer.
+ */
+if ( empty( $argv ) || count($argv) <= 1 ) { print( 'No command given.' ); die; }
+
+$function = $argv[1];
+
+if ( ! function_exists( $function ) ) { print( $function . ' command not found.' ); die; }
+
+unset( $argv[0] );
+unset( $argv[1] );
+
+call_user_func_array( $function, $argv );
+
+/**
+ * Setups project.
+ */
+function setup()
+{
+	echo '------------------------------';
+	echo "\n"; 
+	echo 'Wordpress Plugin (AYUCO) Setup';
+	echo "\n"; 
+	echo '------------------------------';
+	echo "\n"; 
+	echo 'Enter your plugin namespace (example: "MyPlugin" ):';
+	echo "\n"; 
+	$handle = fopen( 'php://stdin', 'r' );
+    $namespace = trim( fgets( $handle ) );
+   	$namespace = empty( $namespace )
+   		? 'MyPlugin'
+   		: str_replace( ' ', '', ucwords( strtolower( $namespace ) ) );
+
+    setname( $namespace );
+    echo sprintf( 'Your plugin namespace is "%s"', $namespace );
+	echo "\n"; 
+	echo 'Setup completed!';
+    exit;
+}
+
+/**
+ * Renames plugin package.
+ */
+function setname ()
+{
+	$name = func_get_args()[0];
+
+	if ( empty( $name ) ) { print( 'Rename command is expenctig a name.' ); die; }
+	
+	try {
+		
+		$config = require_once __DIR__ . '/config/plugin.php' ;
+		$currentname = $config['namespace'];
+
+		replace_in_file( $currentname, $name, __DIR__.'/config/plugin.php' );
+
+		replace_in_file( 
+			'namespace ' . $currentname,
+			'namespace ' . $name
+			, __DIR__.'/plugin/Main.php'
+		);
+
+		foreach ( scandir( __DIR__ . '/plugin/models' ) as $filename ) {
+			replace_in_file( 
+				'namespace ' . $currentname,
+				'namespace ' . $name,
+				__DIR__ . '/plugin/models/' . $filename
+			);
+		}
+
+		foreach ( scandir( $config['paths']['controllers'] ) as $filename ) {
+			replace_in_file( 
+				'namespace ' . $currentname,
+				'namespace ' . $name,
+				$config['paths']['controllers'] . $filename
+			);
+			replace_in_file( 
+				'use ' . $currentname,
+				'use ' . $name,
+				$config['paths']['controllers'] . $filename
+			);
+		}
+
+		replace_in_file( 
+			'"' . $currentname,
+			'"' . $name,
+			__DIR__ . '/composer.json'
+		);
+
+		exec( 'composer dump-autoload' );
+
+	} catch ( Exception $e ) {
+		print( $e->getMessage() );
+	}
+}
+
+/**
+ * Replaces needle in file.
+ *
+ * @param string $needle  Needle to replace with.
+ * @param string $replace What to replace with.
+ * @param string $filename
+ */
+function replace_in_file( $needle, $replace, $filename )
+{
+	if ( $filename == '.' || $filename == '..' ) return;
+	file_put_contents( 
+		$filename, 
+		preg_replace(
+			'/' . $needle . '/',
+			$replace,
+			file_get_contents( $filename )
+		) 
+	);
+}
+
+exit;
