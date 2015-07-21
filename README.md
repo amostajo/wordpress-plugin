@@ -9,6 +9,8 @@ The power of **Composer** and **MVC** in your **Wordpress** plugins.
 
 **Wordpress Plugin** (WPP) is a development template that can be used to create modern and elegant plugins. WPP comes with [Composer](https://getcomposer.org/) and [Lightweight MVC](https://github.com/amostajo/lightweight-mvc) framework.
 
+[![Video tutorial header](http://s10.postimg.org/njeae0ogp/Videotutorialheader.jpg)](http://youtu.be/fXPNMH8vaMI)
+
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Updating](#updating)
@@ -16,6 +18,7 @@ The power of **Composer** and **MVC** in your **Wordpress** plugins.
     - [Main Class](#main-class)
         - [Hooks and Filters](#hooks-and-filters)
     - [MVC](#mvc)
+    - [Config](#config)
 - [Coding Guidelines](#coding-guidelines)
 - [License](#license)
 
@@ -82,12 +85,6 @@ This will install all the software dependencies of WPP.
 In order to prevent conflicts with other plugins using this template, it is suggested to set a name and change its namespace.
 
 To do this, type the following in the commando prompt:
-
-```bash
-php ayuco setup
-```
-
-This will ask you for a new name for yor plugin, you can always change it later with the following command:
 
 ```bash
 php ayuco setname MyNewName
@@ -212,7 +209,17 @@ class Main extends Plugin
 }
 ```
 
-## MVC
+Your `Main.php` can be accessed by other plugins or themes. If your namespace is `MyPlugin` a php variable called `$myplugin` will be created as an instance of `Main.php`.
+
+Other naming examples:
+
+```php
+$awesomeplugin; // For AwesomePlugin
+
+$bizapi; // For BizAPI
+```
+
+### MVC
 
 **Lightweight MVC** is a powerfull and small MVC framework that comes with WPP.
 
@@ -220,7 +227,7 @@ To read more about the usar of *Models*, *Views* and *Controllers* we recommed t
 
 [Lightweight MVC](https://github.com/amostajo/lightweight-mvc)
 
-### Main class and MVC
+#### Main class and MVC
 
 **Lightweight MVC** engine is already integrated with `Main.php`, call the engine with `$this->mvc`.
 
@@ -253,6 +260,34 @@ Here is where the MVC files are located within your plugin:
  |---> [plugin]
         |---> [models]
  |---> [views]
+```
+
+### Config
+
+You can add your own config variables into `config\plugin.php` and access them within `Main.php`, like:
+
+```php
+	// In config\plugin.php
+	
+	'myapi' => [
+		'key' => 'jdsldjsfl12938nfk',
+	],
+
+	'url' => 'http://api.com',
+```
+
+```php
+class Main extends Plugin
+{
+	public function connect_api()
+	{
+		$key = $this->config->get('myapi.key');
+
+		$url = $this->config->get('url');
+
+		// MY CODE
+	}
+}
 ```
 
 ## Coding Guidelines
