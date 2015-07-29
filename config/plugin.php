@@ -5,15 +5,15 @@
  * --------------------------
  */
 
-return [
+return array(
 
 	'namespace'	=> 'Plugin',
 
-	'paths' => [
+	'paths' => array(
 
 		'controllers'	=> __DIR__ . '/../controllers/',
 		'views'			=> __DIR__ . '/../views/',
 
-	],
+	),
 
-];
+);

@@ -24,7 +24,7 @@ The power of **Composer** and **MVC** in your **Wordpress** plugins.
 
 ## Requirements
 
-* PHP >= 5.5.9
+* PHP >= 5.3.0
 
 ## Installation
 
@@ -146,7 +146,7 @@ class Main extends Plugin
 		// Call public Wordpress HOOKS and FILTERS here
 		// --------------------------------------------
 		// i.e.
-		// add_action( 'save_post', [ &$this, 'save_post' ] );
+		// add_action( 'save_post', array( &$this, 'save_post' ) );
 	}
 
 	/**
@@ -157,7 +157,7 @@ class Main extends Plugin
 		// Call public Wordpress HOOKS and FILTERS here
 		// --------------------------------------------
 		// i.e.
-		// add_action( 'admin_init', [ &$this, 'admin_init' ] );
+		// add_action( 'admin_init', array( &$this, 'admin_init' ) );
 	}
 }
 ```
@@ -171,7 +171,7 @@ class Main extends Plugin
 {
 	public function init()
 	{
-		add_filter( 'the_content', [ &$this, 'filter_content' ] );
+		add_filter( 'the_content', array( &$this, 'filter_content' ) );
 	}
 
 	public function on_admin()
@@ -199,7 +199,7 @@ class Main extends Plugin
 
 	public function on_admin()
 	{
-		add_action( 'add_meta_boxes', [ &$this, 'metaboxes' ] );
+		add_action( 'add_meta_boxes', array( &$this, 'metaboxes' ) );
 	}
 
 	public function metaboxes( $post_type, $post )
@@ -242,7 +242,7 @@ class Main extends Plugin
 
 	public function on_admin()
 	{
-		add_action( 'save_post', [ &$this, 'save_post' ] );
+		add_action( 'save_post', array( &$this, 'save_post' ) );
 	}
 
 	public function save_post( $post_id )
@@ -269,9 +269,9 @@ You can add your own config variables into `config\plugin.php` and access them w
 ```php
 	// In config\plugin.php
 	
-	'myapi' => [
+	'myapi' => array(
 		'key' => 'jdsldjsfl12938nfk',
-	],
+	),
 
 	'url' => 'http://api.com',
 ```

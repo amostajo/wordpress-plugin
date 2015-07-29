@@ -20,7 +20,7 @@ class Main extends Plugin
 		// Call public Wordpress HOOKS and FILTERS here
 		// --------------------------------------------
 		// i.e.
-		// add_action( 'save_post', [ &$this, 'save_post' ] );
+		// add_action( 'save_post', array( &$this, 'save_post' ) );
 	}
 
 	/**
@@ -31,6 +31,6 @@ class Main extends Plugin
 		// Call public Wordpress HOOKS and FILTERS here
 		// --------------------------------------------
 		// i.e.
-		// add_action( 'admin_init', [ &$this, 'admin_init' ] );
+		// add_action( 'admin_init', array( &$this, 'admin_init' ) );
 	}
 }
