@@ -24,7 +24,7 @@ The power of **Composer** and **MVC** in your **Wordpress** plugins.
 
 ## Requirements
 
-* PHP >= 5.3.0
+* PHP >= 5.4.0
 
 ## Installation
 
