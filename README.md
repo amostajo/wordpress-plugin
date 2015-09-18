@@ -11,6 +11,8 @@ The power of **Composer** and **MVC** in your **Wordpress** plugins.
 
 [![Video tutorial header](http://s10.postimg.org/njeae0ogp/Videotutorialheader.jpg)](http://youtu.be/fXPNMH8vaMI)
 
+**NOTE:** Need to create a theme? Use [Wordpress THEME template](https://github.com/amostajo/wordpress-theme) instead.
+
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Updating](#updating)
