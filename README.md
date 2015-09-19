@@ -1,4 +1,4 @@
-# WORDPRESS PLUGIN (Template)
+# WORDPRESS PLUGIN TEMPLATE
 --------------------------------
 
 [![Latest Stable Version](https://poser.pugx.org/amostajo/wordpress-plugin/v/stable)](https://packagist.org/packages/amostajo/wordpress-plugin)
@@ -38,7 +38,7 @@ Download the [latest release](https://github.com/amostajo/wordpress-plugin/relea
 
 ### Step 2
 
-Create the folder location where you plugin will reside, usually inside the plugins folder of your wordpress installation:
+Create the folder location where your plugin will reside, usually inside the plugins folder of your wordpress installation:
 
 ```bash
 [WORDPRESS ROOT]
