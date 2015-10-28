@@ -17,12 +17,12 @@ $plugin_class = $plugin_namespace . '\Main';
 $$plugin_name = new $plugin_class( new Amostajo\WPPluginCore\Config( $config ) );
 
 //--- INIT
-$$plugin_name->init();
+$$plugin_name->autoload_init();
 
 //--- ON ADMIN
 if ( is_admin() ) {
 
-	$$plugin_name->on_admin();
+	$$plugin_name->autoload_on_admin();
 
 }
 

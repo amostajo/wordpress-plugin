@@ -5,15 +5,17 @@
  * --------------------------
  */
 
-return array(
+return [
 
 	'namespace'	=> 'Plugin',
 
-	'paths' => array(
+	'paths' => [
 
 		'controllers'	=> __DIR__ . '/../controllers/',
 		'views'			=> __DIR__ . '/../views/',
 
-	),
+	],
 
-);
+	'addons' => [],
+
+];

@@ -21,6 +21,8 @@ The power of **Composer** and **MVC** in your **Wordpress** plugins.
         - [Hooks and Filters](#hooks-and-filters)
     - [MVC](#mvc)
     - [Config](#config)
+    - [Add-ons](#add-ons)
+- [Change Log](#change-log)
 - [Coding Guidelines](#coding-guidelines)
 - [License](#license)
 
@@ -270,7 +272,7 @@ You can add your own config variables into `config\plugin.php` and access them w
 
 ```php
 	// In config\plugin.php
-	
+
 	'myapi' => array(
 		'key' => 'jdsldjsfl12938nfk',
 	),
@@ -291,6 +293,27 @@ class Main extends Plugin
 	}
 }
 ```
+
+### Add-ons
+
+WPP now supports **Addons** or external **Packages** developed using WP code.
+
+Add your add-ons at the config file, like:
+
+```php
+	// In config\plugin.php
+
+	'addons' => [
+        'SpecialAddonNamespace\AddonClass',
+        'PackageAddon\AddonClass',
+    ],
+```
+
+For more information about add-on development, click [here](https://github.com/amostajo/wordpress-plugin-core).
+
+## Change Log
+
+For version upgrades and change log, click [here](https://github.com/amostajo/wordpress-plugin/releases).
 
 ## Coding Guidelines
 
