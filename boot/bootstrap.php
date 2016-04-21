@@ -87,7 +87,6 @@ if ( ! function_exists( 'wdt_hooks_error' )  ) {
         </div>
         <?php
         unset($plugin_error);
-        unset($reflection);
     }
 }
 
