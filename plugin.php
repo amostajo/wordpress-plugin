@@ -1,5 +1,4 @@
 <?php
-
 /*
 
 Plugin Name: [MY PLUGIN]
@@ -20,18 +19,9 @@ Author URI: [MY IR COMPANY URL]
 //
 // NOTE:
 //
-// Do NOT add any code line in this file.
+// Try NOT to add any code line in this file.
 //
-// Use "plugin\Main.php" to add your hooks and filters.
-//
-//------------------------------------------------------------
-
-require_once( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' );
-
-//------------------------------------------------------------
-//
-// Loads and inits plugin.
+// Use "plugin\Main.php" to add your hooks.
 //
 //------------------------------------------------------------
-
-require_once( plugin_dir_path( __FILE__ ) . 'boot/autoload.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'boot/bootstrap.php' );
